@@ -21,10 +21,10 @@
     </section>
     <section id="direita">
         <table>
-            <tr>
-                <td>Nome</td>
-                <td>Telefone</td>
-                <td colspan="2">Email</td> <!--Colspan faz com ele o <td> oculpe dois espaco!-->
+            <tr id="titulo">
+                <td>NOME</td>
+                <td>TELEFONE</td>
+                <td colspan="2">EMAIL</td> <!--Colspan faz com ele o <td> oculpe dois espaco!-->
             </tr>
             <tr>
                 <td>Teste</td>
