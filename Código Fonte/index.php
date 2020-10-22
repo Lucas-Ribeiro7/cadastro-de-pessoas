@@ -11,15 +11,28 @@
             $p = new pessoa("cadastropdo", "localhost", "root", "");
         ?>
 <body>
+    <?php
+        if(isset($_POST['nome'])){
+            $nome = addslashes($_POST['nome']); //ESTA FUNÇÃO FAZ A PROTEÇÃO DE CÓDIGOS MALICIOSO 
+            $telefone = addslashes($_POST['telefone']);
+            $email = addslashes($_POST['email']);
+            
+            if(!$p->cadastrarPessoa($nome, $telefone, $email)){
+            echo "<p>O Email digitado já foi cadastrado.</p>";
+            }else{
+                $p->cadastrarPessoa($nome, $telefone, $email);
+            }
+        }
+    ?>
     <section id="esquerda">
-        <form action="">
+        <form action="" method="POST"> 
             <h2>CADASTRO DE PESSOAS</h2>
             <label>Nome</label>
-            <input type="text" name="nome">
+            <input type="text" name="nome" required>
             <label>Telefone</label>
-            <input type="text" name="telefone">
+            <input type="text" name="telefone" required>
             <label>Email</label>
-            <input type="text" name="email">
+            <input type="text" name="email" required>
             <input type="submit" value="Cadastrar">
         </form>
     </section>
@@ -43,6 +56,9 @@
                             <?php
                             echo "</tr>";
                         }
+                    }else{
+                        //CASO O BANCO ESTEJA VAZIO
+                        echo "<p>Ainda não há pessoas cadastradas</p>";
                     }
                 ?>              
                 
