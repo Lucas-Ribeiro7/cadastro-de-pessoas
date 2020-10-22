@@ -1,15 +1,15 @@
 *{
     padding: 0%;
     margin: 0%;
-    font-family: Arial;
+    font-family: arial;
 }
 label, input{
-    display: block;
+    display: block; /*PARA FICAR UM EMBAIXO DO OUTRO*/
     line-height: 30px;
     height: 30px;
-    outline: none;
+    outline: none; /*TIRA A MARCAÇÃO QUANDO SE APROXIMA DO INPUT*/
     font-size: 13pt;
-    width: 320px;
+    width: 100%;
 }
 form{
     width: 330px;

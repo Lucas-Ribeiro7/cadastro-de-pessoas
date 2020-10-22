@@ -6,6 +6,10 @@
     <link rel="stylesheet" href="estilo.css">
     <title>Cadastro</title>
 </head>
+        <?php
+            require_once 'pessoa.php';
+            $p = new pessoa("cadastropdo", "localhost", "root", "");
+        ?>
 <body>
     <section id="esquerda">
         <form action="">
@@ -26,11 +30,22 @@
                 <td>TELEFONE</td>
                 <td colspan="2">EMAIL</td> <!--Colspan faz com ele o <td> oculpe dois espaco!-->
             </tr>
-            <tr>
-                <td>Teste</td>
-                <td>Teste</td>
-                <td>Teste</td>
-                <td><a href="">Editar</a><a href="">Excluir</a></td>
+                <?php
+                    $dados = $p->buscarDados();
+                    if(count($dados) > 0){ //Verificar se exite dados sentro do array
+                        for($i = 0; $i < count($dados); $i++){ //count() serve para percorrer sobre a array()
+                            echo "<tr>";
+                            foreach($dados[$i] as $key => $value){
+                                echo "<td>$value</td>";
+                            }
+                            ?>
+                            <td><a href="">Editar</a><a href="">Excluir</a></td>
+                            <?php
+                            echo "</tr>";
+                        }
+                    }
+                ?>              
+                
             </tr>
         </table>
     
