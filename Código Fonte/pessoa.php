@@ -17,7 +17,7 @@
             }
             public function buscarDados(){
                 $res = array();
-                $script = $this->pdo->query("SELECT nome, telefone, email FROM pessoa ORDER BY nome;");
+                $script = $this->pdo->query("SELECT * FROM pessoa ORDER BY nome;");
                 $res = $script->fetchAll(PDO::FETCH_ASSOC);
                 return $res;
             }
@@ -36,5 +36,10 @@
                     $cmd->execute();
                     return true;
                 } 
+            }
+            public function excluirPessoa($id){
+                $cmd = $this->pdo->prepare("DELETE FROM pessoa WHERE id = :id");
+                $cmd->bindValue(":id", $id);
+                $cmd->execute();
             }
     }

@@ -49,10 +49,16 @@
                         for($i = 0; $i < count($dados); $i++){ //count() serve para percorrer sobre a array()
                             echo "<tr>";
                             foreach($dados[$i] as $key => $value){
-                                echo "<td>$value</td>";
+                                if($key != "id"){ 
+                                    //SERVE PARA TIRAR O ID E DEIXAR APENAS O NOME, TELEFONE E EMAIL
+                                    echo "<td>$value</td>";
+                                }
+                                
                             }
                             ?>
-                            <td><a href="">Editar</a><a href="">Excluir</a></td>
+                            <td>
+                            <a href="">Editar</a><a href="index.php?id=<?php echo $dados[$i]['id']; ?>">Excluir</a>
+                            </td>
                             <?php
                             echo "</tr>";
                         }
@@ -68,3 +74,10 @@
     </section> 
 </body>
 </html>
+    <?php
+        if(isset($_GET['id'])){
+            $id_pessoa = addslashes($_GET['id']);
+            $p->excluirPessoa($id_pessoa);
+            header("refresh=0; url=index.php"); //PARA ATUALIZAR A PÁGINA
+        }
+    ?>
