@@ -24,12 +24,6 @@
             }
         }
     ?>
-    <?php
-        if(isset($_GET['ip_up'])){
-            $id_update = addslashes(isset($_GET['ip_up']));
-            $res = $p->buscarDadosPessoa($id_update);
-        }
-    ?>
     <section id="esquerda">
         <form action="" method="POST"> 
             <h2>CADASTRO DE PESSOAS</h2>
@@ -63,7 +57,7 @@
                             }
                             ?>
                             <td>
-                            <a href="">Editar</a><a href="index.php?id=<?php echo $dados[$i]['id']; ?>">Excluir</a>
+                            <a href="atualizar_dados.php?id_up=<?php echo $dados[$i]['id'] ?>">Editar</a><a href="index.php?id=<?php echo $dados[$i]['id']; ?>">Excluir</a>
                             </td>
                             <?php
                             echo "</tr>";
