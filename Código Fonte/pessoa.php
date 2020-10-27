@@ -42,4 +42,17 @@
                 $cmd->bindValue(":id", $id);
                 $cmd->execute();
             }
+
+            public function buscarDadosPessoa($id){
+                $res = array();
+                $sql = $this->pdo->prepare("SELECT * FROM pessoa WHERE id = :id");
+                $sql->bindValue(":id", $id);
+                $sql->execute();
+                $res = $sql->fetch(PDO::FETCH_ASSOC);
+                return $res;
+            }
+
+            public function atualizarDados(){
+
+            }
     }

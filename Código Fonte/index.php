@@ -24,6 +24,12 @@
             }
         }
     ?>
+    <?php
+        if(isset($_GET['ip_up'])){
+            $id_update = addslashes(isset($_GET['ip_up']));
+            $res = $p->buscarDadosPessoa($id_update);
+        }
+    ?>
     <section id="esquerda">
         <form action="" method="POST"> 
             <h2>CADASTRO DE PESSOAS</h2>
