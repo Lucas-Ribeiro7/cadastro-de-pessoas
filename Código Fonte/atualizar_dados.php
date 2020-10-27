@@ -42,6 +42,10 @@
         </form>
     </section>
 
-    
+    <br>
+
+    <button>
+        <a href="index.php">Novo Cadastro</a>
+    </button>
 </body>
 </html>
