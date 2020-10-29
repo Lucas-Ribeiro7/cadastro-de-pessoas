@@ -23,29 +23,35 @@
             if(isset($_GET['id_up'])){
                 $id_update = addslashes($_GET['id_up']);
                 $res = $p->buscarDadosPessoa($id_update);
+                $id = $res['id'];
                 $nome = $res['nome'];
                 $telefone = $res['telefone'];
                 $email = $res['email'];
-                
             }
         ?>
     <section id="esquerda">
-        <form action="" method=""> 
+        <form action="" method="POST"> 
             <h2>CADASTRO DE PESSOAS</h2>
             <label>Nome</label>
-            <input type="text" name="nome" value="<?php echo $nome;?>" required>
+            <input type="text" name="nome_novo" value="<?php echo $nome;?>" required>
             <label>Telefone</label>
-            <input type="text" name="telefone" value="<?php echo $telefone; ?>" required>
+            <input type="text" name="telefone_novo" value="<?php echo $telefone; ?>" required>
             <label>Email</label>
-            <input type="text" name="email" value="<?php echo $email; ?>" required>
+            <input type="text" name="email_novo" value="<?php echo $email; ?>" required>
             <input type="submit" value="Atualizar">
         </form>
     </section>
+            <?php
+                $nomeNovo = $_POST['nome_novo'];
+                $telefoneNovo = $_POST['telefone_novo'];
+                $emailNovo = $_POST['email_novo'];
+                $p->atualizarDados($id, $nomeNovo, $telefoneNovo, $emailNovo);
+            ?>
 
     <br>
 
-    <button>
-        <a href="index.php">Novo Cadastro</a>
-    </button>
+    
+        <a href="index.php">Voltar</a>
+    
 </body>
 </html>

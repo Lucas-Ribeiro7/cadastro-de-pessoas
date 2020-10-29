@@ -52,7 +52,13 @@
                 return $res;
             }
 
-            public function atualizarDados(){
-
+            public function atualizarDados($id, $nome, $telefone, $email){
+                $cmd = $this->pdo->prepare("UPDATE pessoa SET nome = :n, telefone = :t, email = :e WHERE id = :i");
+                $cmd->bindValue(":n", $nome);
+                $cmd->bindValue(":t", $telefone);
+                $cmd->bindValue(":e", $email);
+                $cmd->bindValue(":i", $id);
+                $cmd->execute();
+        
             }
     }
