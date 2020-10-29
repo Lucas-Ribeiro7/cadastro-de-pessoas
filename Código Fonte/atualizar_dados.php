@@ -33,21 +33,26 @@
         <form action="" method="POST"> 
             <h2>CADASTRO DE PESSOAS</h2>
             <label>Nome</label>
-            <input type="text" name="nome_novo" value="<?php echo $nome;?>" required>
+            <input type="text" name="nome" value="<?php echo $nome;?>" required>
             <label>Telefone</label>
-            <input type="text" name="telefone_novo" value="<?php echo $telefone; ?>" required>
+            <input type="text" name="telefone" value="<?php echo $telefone; ?>" required>
             <label>Email</label>
-            <input type="text" name="email_novo" value="<?php echo $email; ?>" required>
+            <input type="text" name="email" value="<?php echo $email; ?>" required>
             <input type="submit" value="Atualizar">
         </form>
     </section>
             <?php
-                $nomeNovo = $_POST['nome_novo'];
-                $telefoneNovo = $_POST['telefone_novo'];
-                $emailNovo = $_POST['email_novo'];
-                $p->atualizarDados($id, $nomeNovo, $telefoneNovo, $emailNovo);
+                if(isset($_POST['nome'])){
+                    $cmd = addslashes($_GET['id_up']);
+                    $res = $p->buscarDadosPessoa($cmd);
+                    $id = $res['id'];
+                    $nome = addslashes($_POST['nome']); //ESTA FUNÇÃO FAZ A PROTEÇÃO DE CÓDIGOS MALICIOSO 
+                    $telefone = addslashes($_POST['telefone']);
+                    $email = addslashes($_POST['email']);
+                    $p->atualizarDados($id, $nome, $telefone, $email);
+                    header("location: index.php");
+                    }
             ?>
-
     <br>
 
     
